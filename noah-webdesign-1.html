@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>NOAH Forum</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="generator" content="ToolTwist" />
+        <link href="//localhost:4000/hack-for-offline/bootstrap.min.css" rel="stylesheet">
+        <link href="//localhost:4000/hack-for-offline/font-awesome.min.css" rel="stylesheet">
+        <link href="//localhost:4000/hack-for-offline/ionicons.min.css" rel="stylesheet">
+
+        <link href="css/dropzone.css" rel="stylesheet">
+        <link href="css/jquery.urlive.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet">
+<style type='text/css'>
+/*
+ * Files
+ */
+	.view .btn {
+		border: none;
+
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+        
+        font-size: 1em;
+	}
+	.view .btn.active, .view .btn:focus {
+		outline-style: none;
+	}
+	.files, .view, .view .glyphicon, time {
+		color: #7d7f82;
+	}
+	.files.grid > .media {
+		float: left;
+		width: 25%;
+        /*
+		min-height: 70px;
+		max-height: 200px;
+        */
+		margin-top: 0;
+	}
+	.files.grid > .media .pads {
+		margin: 5px;
+		padding: 18px;
+		background: rgba(0, 0, 0, 0.05);
+        
+        -webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+        
+        border-bottom: 1px solid lightgray;
+        
+        position: relative;
+	}
+	.files.grid > .media .media-left {
+		clear: both;
+		display: block;
+		text-align: center;
+		font-size: 20px;
+		padding: 0;
+	}
+	.files.grid > .media .media-body {
+		clear: both;
+		display: block;
+		margin-top: 5px;
+		text-align: center;
+        
+        padding-top: 0;
+		border-top: none;
+	}
+	.files > .media .media-body {
+		padding-top: 5px;
+		border-top: 1px dashed #eee;
+	}
+    .files > .media, .files > .media .media-body {
+        overflow: visible;
+    }
+	.files.grid .list-info {
+		display: none;
+	}
+    .files > .media .media-left a i {
+        font-size: 48px;
+        vertical-align: top;
+    }
+    .files.grid > .media .media-left a i {
+        font-size: 72px;
+        vertical-align: middle;
+    }
+	.files .attachment {
+		position: relative;
+	}
+	.files .attachment .controls {
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin: 0;
+	}
+	.files .controls .btn {
+		padding: 0 5px;
+		border: none;
+		background: 0 0;
+	}
+	.files .grid-info {
+		display: none;
+	}
+	.files.grid .grid-info {
+		display: inline;
+	}
+    .files.grid .file-options {
+        display: block;
+        margin-top: 5px;
+        padding-top: 5px;
+    }
+    .file-options a {
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+/*
+ * Media Queries
+ */
+
+	@media (max-width: 767px) {
+	    .media-heading {
+	        font-size: 14px;
+	    }
+	    .view {
+	        width: 100%;
+	        margin-bottom: 25px;
+	    }
+	    .view button {
+	        width: 50%;
+	    }
+	    .view .btn {
+	        padding: 15px 10px;
+	    }
+	}
+	
+	@media (max-width: 990px) {
+	    .files.grid > .media {
+	        width: 50%;
+	    }
+	}
+	@media (max-width: 1024px) {
+		body > .container {
+			width: 100%;
+		}
+	}</style>
+
+    </head>
+    <body>
+<div class="container">
+<!-- Mobile Navbar (Show on SX) -->
+<div class="navbar navbar-inverse navbar-static-top navbar-body  navbar-container" role="navigation">
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle nav-forum-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-ex1-collapse forum-collapse">
+        <p class="txt-categories-mobile">CATEGORIES</p>
+        <input type="text" id="tbox_search_cat_mobile">
+
+        <div id="curia-categories-mobile"></div>
+
+        <!-- Disable adding categories for now...
+        <form id="add_new_container">
+            <p>Add new</p>
+            <input type="text" id="add_category_mobile" placeholder="Category">
+            <br/>
+            <input type="text" id="add_title_mobile" placeholder="Title">
+            <br/>
+            <button class="pencil-plus"><div class="glyphicon glyphicon-pencil "></div></button>
+        </form>
+        -->
+    </div>
+
+</div>
+<!-- Mobile Navbar (Show on SX) -->
+
+
+<!-------- TEMPLATES FOR CATEGORY NAVBAR (FOR MOBILE) --------->
+
+<!-- Large category list -->
+<script id="noah-curia-template-categoryList-mobile" type="text/template">
+    <<{childrenHtml}>>
+</script>
+
+<!-- Template for a Category element -->
+<script id="noah-curia-template-category-mobile" type="text/template">
+    <ul class="nav navbar-nav dropdown-mobile">
+        <li class="dropdown"><a class="dropdown-toggle dropdown-title-mobile" data-toggle="dropdown" href="news"><div class="glyphicon glyphicon-plus-sign"> </div><<element.description>></a>
+            <ul class="dropdown-menu">
+                <<{childrenHtml}>>
+            </ul>
+        </li>
+    </ul>
+</script>
+
+<!- Template for a Topic element -->
+<script id="noah-curia-template-topic-mobile" type="text/template">
+    <li><a href="#" class="forum-mobile-sublinks" onclick="ForumPage.showTopic('<<element.id>>');"><<element.summary>></a></li>
+</script>
+
+
+        <!-- Page content -->
+            <content class="forum">
+                <div class="col-md-3 col-sm-4">
+                    <!-- Regular sidebar -->
+<aside>
+    <div id="sidebar_forum">
+        <div class="btn-rep-container">
+            <form>
+                <button class="btn-replies" onclick="ForumPage.showWall(); return false;">
+                    <div class="num-replies">2</div>
+                    <div class="bg-replies">
+                        <img src="images/msg.png" class="img-replies">
+                    </div>
+                </button>
+                <p class="txt-replies">Replies</p>
+                <div>
+                	<a href="javascript:void(0)" class="txt-categories" onclick="ForumPage.showCategories(); return false;">CATEGORIES</a>
+                </div>
+                <input type="text" id="tbox_search_cat">
+            </form>
+        </div>
+		
+        <div id="accordion dropdown_container" class="panel-group">
+            <div id="curia-categories-sidebar"></div><!-- Muchache generated code gets inserted here -->
+            
+            <hr>
+            <h4 class="file-list">
+	    		<i class="ion-gear-b"></i><a href="javascript:void(0)">Manage Files</a>
+		    </h4>
+        </div>
+        
+        <!-- Disable adding categories for now...
+        <form id="add_new_container">
+            <p>Add new</p>
+            <input type="text" id="add_category" placeholder="Category">
+            <br/>
+            <input type="text" id="add_title" placeholder="Title">
+            <br/>
+            <button class="pencil-plus"><div class="glyphicon glyphicon-pencil "></div></button>
+        </form>
+        -->
+    </div>
+</aside>
+
+                </div>
+                <div class="col-md-9 col-sm-8 panel">
+                    <div id="curia-posts" class="curia-thread-NEW curia-autoload-NEW" data-curia-theme="noah_post" data-curia-threadId-NEW='12345' data-curia-anchor="ABC987"></div>
+                </div>
+            </content>
+        <!-- Page content -->
+        </div>
+
+
+
+<script id="noah-curia-template-fileList-fullpage" type="text/template">
+	<div class="forum-home panel-2">
+
+        <h4>Files page</h4>
+        <hr>
+        
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-cloud-upload"></i> Upload</button>
+        <br>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="File Name" aria-describedby="basic-addon2">
+            <span class="btn btn-success input-group-addon" id="basic-addon2">Search</span>
+        </div>
+        <br>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Upload File</h4>
+              </div>
+              <div class="modal-body">
+                <div class="dropzone" id="file-upload"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" onclick="FileManage.startFileUpdate()"><i class="glyphicon glyphicon-play"></i> Start Upload</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">File Edit</h4>
+              </div>
+              <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">File Name</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Description</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default">Update</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="view btn-group btn-group-sm pull-right" role="group" aria-label="...">
+            <button type="button" class="btn btn-default grid active" onclick="FileManage.box('.files.grid .media .pads');">
+                <i class="glyphicon glyphicon-th-large"></i> Grid
+            </button>
+            <button type="button" class="btn btn-default list" onclick="FileManage.boxReset('.files.grid .media .pads');">
+                <i class="glyphicon glyphicon-menu-hamburger"></i> List
+            </button>
+        </div>
+        <div class="clearfix"></div>
+
+        <time>Sept 23, 2015</time>
+
+        <br>
+        <br class="list-info">
+
+        <div class="files grid">
+            {{#file}}
+	        <div class="media">
+	            <div class="pads">
+	                <div class="media-left">
+	                    <a href="#">
+	                        <i class="ion-document"></i>
+	                    </a>
+	                </div>
+	                <div class="media-body">
+	                    <div class="attachment">
+	
+	                        <a href="#" class="title">{{filename}}</a>
+	
+	                        <!-- [ hidden on large devices] -->
+	                        <span class="list-info">
+	                            <br>
+	                            <span>
+	                                <strong>Uploaded by:</strong>
+                                    {{#user}}
+                                    {{#firstName}}{{firstName}} {{/firstName}}
+                                    {{#lastName }}{{lastName }}{{/lastName }}
+                                    {{/user}}
+	                                <br>
+	                                2:11pm
+	                            </span>
+	                        </span>
+	                        
+	                        <span class="list-info text-muted"> | </span>
+	                        
+	                        <br class="grid-info" data-original-title="" title="">
+	                        
+	                        <span class="file-options">
+	                            <a href="#" class="grid-info ion-information-circled" data-toggle="tooltip" data-placement="auto" title="file info"></a>
+	                            &nbsp;
+	                            <small class="list-info">11kb&nbsp;</small>
+	                            <span class="grid-info" data-original-title="" title=""> </span>
+	                            <a href="#" class="ion-android-download" data-toggle="tooltip" data-placement="auto" title="download"></a>
+	                            &nbsp;
+	                            <span class="grid-info" data-original-title="" title="">
+	                                <a href="#" class="ion-edit" data-toggle="tooltip" data-placement="auto" title="edit"></a>
+	                                &nbsp;
+	                                <a href="#" class="ion-close" data-toggle="tooltip" data-placement="auto" title="delete"></a>
+	                            </span>
+	                        </span>
+	
+	                        <!-- [ Post controls ] -->
+	                        <div class="controls list-info">
+	                            <div class="dropdown clearfix">
+	                                <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-expanded="false">
+	                                    <span class="glyphicon glyphicon-option-vertical"></span>
+	                                </button>
+	                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuDivider">
+	                                    <li>
+	                                        <a href="#">Copy/Move</a>
+	                                    </li>
+	                                    <li>
+	                                        <a href="#">Comments</a>
+	                                    </li>
+	                                    <li role="presentation" class="divider"></li>
+	                                    <li>
+	                                        <a href="#">Upload File</a>
+	                                    </li>
+	                                    <li>
+	                                        <a href="#">Delete</a>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	                        </div>
+	                        <!-- /Post controls -->
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        {{/file}}
+
+            <div class="clearfix"></div>
+        </div>
+        <!-- /files grid -->
+
+    </div>
+    <!-- /panel-2 -->
+    <script>
+    	jQuery(document).ready(function() {
+    		$(function () {
+			  	$('[data-toggle="tooltip"]').tooltip();
+			});
+    	});
+    </script>
+</script>
+        <script src="//localhost:4000/hack-for-offline/jquery.min.js"></script>
+        <script src="//localhost:4000/hack-for-offline/moment.min.js"></script>
+        <script src="//localhost:4000/hack-for-offline/bootstrap.min.js"></script>
+        <script src="//localhost:4000/hack-for-offline/mustache.min.js"></script>
+        <script src="//localhost:4000/hack-for-offline/dropzone.js"></script>
+        <script src="//localhost:4000/hack-for-offline/underscore-min.js"></script>
+        <script src="//localhost:4000/hack-for-offline/handlebars.min.js"></script>
+
+        <script src="//localhost:4000/js/curia-0.1.0.js"></script>
+        <script src="js/jquery.urlive.min.js"></script>
+        <script src="js/forum-0.0.1.js"></script>
+        <script src="js/file-manage.js"></script>
+    </body>
+</html>

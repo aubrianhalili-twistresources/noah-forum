@@ -1,0 +1,910 @@
+/* =================================== */
+/* ==========>>> GLOBAL <<<=========== */
+/* =================================== */
+@import
+	url(http://fonts.googleapis.com/css?family=Roboto:100,300,700,400|Oswald:400,700,300|Merriweather:400,300,700)
+	; /* Imported Fonts (Roboto,Oswald,Merriweather) */
+/* Font Style Names
+font-family: 'Roboto', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Merriweather', serif;
+*/
+
+/*
+ * Global Styles
+ */
+	* { /* Resets Margin and Padding  */
+		margin: 0;
+		padding: 0;
+	}
+	img {
+		border: none;
+	}
+	td {
+		padding-top: 10px;
+		border-top: 0 !important;
+	}
+	body {
+		background: url('../../images/bg.jpg') center center repeat scroll
+			!important;
+		position: relative;
+	}
+	input[type="text"]:focus {
+		outline-style: none;
+	}
+	
+	input[type="text"], input[type="password"], textarea, .input-group-addon {
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		border-radius: 0;
+	
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+	}
+
+/* Standardize Font Size */
+/*
+body { 
+	font-size:62.5%;
+}
+
+table {
+  font-size:1em;
+}
+*/
+.table-responsive {
+	border: 0 !important;
+}
+
+h1 {
+	font-size: 48px;
+	text-align: center;
+	font-weight: 400;
+}
+
+h3 {
+	font-size: 28px;
+}
+
+a { /* Makes Link Transitions Smooth */
+	-webkit-transition: background 0.2s linear;
+	-moz-transition: background 0.2s linear;
+	-ms-transition: background 0.2s linear;
+	-o-transition: background 0.2s linear;
+	transition: background 0.2s linear;
+	-webkit-transition: color 0.2s linear;
+	-moz-transition: color 0.2s linear;
+	-ms-transition: color 0.2s linear;
+	-o-transition: color 0.2s linear;
+	transition: color 0.2s linear;
+}
+
+a:link, a:active, a:visited {
+	/* Resets the Ugly underline color and style on hover */
+	text-decoration: none !important;
+	color: #8e8f92;
+	cursor: pointer;
+}
+
+a:hover {
+	color: #999;
+	text-deoration: underline;
+}
+
+#noah_header {
+	width: 100%;
+	height: 50px;
+	background: rgba(0, 0, 0, 0.7);
+}
+
+/* ===========>>> END <<<============= */
+
+
+
+/* =>>> Indent when adding as a response <<<= */
+.curia-form-NEW {
+	/* margin-left: 100px; */
+	position: relative;
+}
+.curia-form-NEW .btn-wrap {
+	position: absolute;
+	right: 10px;
+ 	bottom: -5px;
+}
+.curia-form-NEW textarea {
+	border-bottom: 30px solid;
+	border-color: lightgray;
+}
+.curia-form-NEW textarea:focus, .curia-form-NEW textarea:active, .curia-form-NEW textarea:visited {
+	border-color: lightgray;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+
+
+/* =================================== */
+/* =====>>> NAV BUTTON CSS <<<======== */
+/* =================================== */
+
+/* ===========>>> END <<<============= */
+
+/* =================================== */
+/* =====>>> CLASS CALLS CSS <<<======= */
+/* =================================== */
+.noah-header {
+	color: #d6e020;
+	font-family: oswald;
+}
+
+.noah-details-headings {
+	font-family: oswald;
+	font-weight: 300;
+}
+
+/* ===========>>> END <<<============= */
+/* ===========>>> ^^^ <<<============= */
+
+/* =================================== */
+/* ==========>>> HEADER CSS <<<======= */
+/* =================================== */
+.header-menu-bar {
+	background: #221f1f;
+	opacity: 0.78%;
+}
+
+/* ===========>>> END <<<============= */
+
+/* =================================== */
+/* ======>>> NOAH FORUM CSS <<<======= */
+/* =================================== */
+
+content.forum {
+	display: block;
+	margin-top: 30px;
+}
+/* Forum Sidebar css */
+#sidebar_forum {
+	min-height: 100%;
+}
+
+#sidebar_forum_category {
+	background: rgba(0, 0, 0, 0.025);
+	width: 250px;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	top: 160px;
+	padding-top: 5px;
+}
+
+#sidebar_forum_activity {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.05);
+	left: 0px;
+	width: 250px;
+	height: 100%;
+	padding: 12px 25px;
+}
+
+#sidebar_forum_articles {
+	position: absolute;
+	left: 0px;
+	top: 710px;
+	background: rgba(0, 0, 0, 0.025);
+	width: 250px;
+	height: 321px;
+}
+
+a.txt-categories {
+	color: #757778;
+	font-size: 22px;
+	font-weight: 100;
+	margin-top: 35px;
+	display: block;
+}
+.txt-categories:hover {
+	text-decoration: underline !important;
+}
+
+#tbox_search_cat {
+	width: 100%;
+	border-radius: 20px;
+	border: 1px solid #a2a4a4;
+	background: transparent;
+	margin-bottom: 10px;
+	padding: 4px 10px;
+}
+#tbox_search_cat:focus {
+	background: white;
+}
+
+.category-dropdowns,.dropdown-headers {
+	background: transparent !important;
+	border: 0 !important;
+	border-radius: 0;
+}
+
+.btn-rep-container {
+	margin: 15px 0 15px 0;
+}
+
+.txt-replies {
+	font-size: 18px;
+	color: #8f9193;
+	margin-top: 10px;
+	margin-left: 25px;
+	font-weight: 300;
+}
+
+.dropdown-headers {
+	padding-bottom: 0;
+}
+
+.dropdown-title {
+	color: #878888 !important;
+	font-size: 18px;
+	font-weight: 300;
+}
+
+.dropdown-body {
+	padding: 0 15px;
+	border: 0 !important;
+}
+
+.panel-group {
+	margin: 0 0 20px 0 !important;
+}
+
+.panel {
+	box-shadow: none !important;
+}
+
+ul {
+	color: #b0b3b2 !important;
+	font-size: 14px;
+	margin-left: 30px;
+	font-weight: 300;
+}
+
+li {
+	list-style-type: none;
+	margin: 5px 0;
+}
+
+#add_category,#add_title {
+	height: 20px;
+	width: 120px;
+	border-radius: 30px;
+	border: 0;
+	padding-left: 10px;
+	margin-bottom: 5px;
+	font-weight: 200;
+}
+
+#add_new_container {
+	color: #878888;
+	font-size: 14px;
+	margin-left: 30px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	text-align: left;
+	font-size: 16px;
+}
+
+#add_category_mobile,#add_title_mobile {
+	height: 25px;
+	width: 120px;
+	border-radius: 30px;
+	border: 0;
+	padding-left: 10px;
+	margin-bottom: 5px;
+	font-weight: 200;
+}
+
+/* Forum Sidebar css end*/
+
+/* Forum Community Conversation CSS */
+#tbox_say_something {
+	height: 30px;
+	width: 170px;
+	border-radius: 20px;
+	border: 1px solid #a2a4a4;
+	background: transparent;
+	margin-bottom: 24px;
+	font-weight: 200;
+	padding-left: 26px;
+	font-size: 16px;
+}
+
+#tbox_post_thread {
+	height: 30px;
+	width: 190px;
+	border-radius: 20px;
+	border: 1px solid #a2a4a4;
+	background: transparent;
+	margin-bottom: 24px;
+	font-weight: 200;
+	padding-left: 26px;
+	font-size: 16px;
+}
+
+.say_something_container {
+	margin-left: 17%
+}
+
+.community-container {
+	border-bottom: 2px solid rgba(0, 0, 0, 0.13);
+	padding: 30px 0 10px;
+}
+.community-container:last-child {
+	border-bottom: none;
+}
+
+.community-header {
+	font-size: 18px;
+	font-weight: 300;
+	color: #707174;
+}
+
+.community-header-large {
+	color: #d6e020;
+	font-size: 28px;
+	font-weight: 200;
+	line-height: 1;
+}
+
+.com-header-topic {
+	font-weight: 400;
+}
+
+.com-name-bs {
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.com-description {
+	color: #8e8f92;
+	font-weight: 300;
+	padding-right: 17px;
+	word-wrap: break-word;
+	width: 100%;
+}
+
+.com-icons button,.com-icons button:hover,.com-icons button:focus,.com-icons button:active {
+	background: transparent;
+	border: 0;
+	padding: 0;
+	margin-right: 5px;
+	color: gray;
+}
+.com-icons {
+	padding: 5px 10px 5px 10px;
+	border-bottom: 1px solid whitesmoke;
+}
+.com-icons a, .com-icons strong {
+	color: gray;
+}
+.com-icons a {
+	font-size: 12px;
+}
+.com-icons a:hover {
+	color: dimgray;
+}
+
+.com-profile-img {
+	width: 65px;
+	height: auto;
+	display: -moz-inline-stack;
+	display: inline-block;
+	/*  margin-bottom: 8px;*/
+}
+.child-posts .com-profile-img {
+	width: 48px;
+}
+
+.com-profile-name {
+	font-size: 12px;
+	color: #8a8c8e;
+	/*  border: 1px solid #8a8c8e;*/
+	text-align: center;
+	padding: 3px;
+	border-radius: 22px;
+	/*  width: 90px;*/
+	margin: auto;
+	font-weight: bold;
+}
+
+.com-profile-container,.com-profile-container-nb {
+	text-align: center;
+}
+
+.com-post {
+	min-height: 50px;
+	position: relative;
+}
+.com-post .controls {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.com-post .controls .dropdown button {
+	border: none;
+	padding: 0 2px;
+}
+.com-post .controls .dropdown button:hover, .com-post .controls .dropdown button:active, .com-post .controls .dropdown button:focus {
+	background: none;
+}
+
+.com-video {
+	background: rgba(0, 0, 0, 0.3);
+	color: white;
+	padding: 25px 60px;
+	font-size: 25px;
+}
+
+.date-time {
+	color: darkgray;
+	font-size: 11px;
+}
+
+.main-topic-container {
+	/* border-bottom: 2px dashed rgba(0, 0, 0, 0.15); */
+	margin-bottom: 20px;
+}
+
+.main-topic-container-nb {
+	margin-bottom: 20px;
+}
+
+.eye {
+	color: gray;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 200;
+	padding-left: 10px;
+}
+
+.eye-container {
+	color: #bdbfc2;
+	text-align: center;
+	margin-bottom: 50px;
+	margin-left: 50px;
+}
+/* Forum Community Conversations end*/
+
+/* Forum Mobile Navbar CSS */
+.navbar-body {
+	background: rgba(0, 0, 0, 0.05) !important;
+	border: 0 !important;
+	padding: 0 0 0 15px;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+.icon-bar {
+	background-color: #a6a8aa !important;
+	height: 3px !important;
+	border-radius: 10px !important;
+	width: 25px !important;
+}
+
+.nav-forum-toggle {
+	border: 0;
+	float: left;
+}
+
+.nav-forum-toggle:hover,.nav-forum-toggle:active,.nav-forum-toggle:focus
+	{
+	background: none !important;
+}
+
+.forum-collapse {
+	border: 0 !important;
+	text-align: center;
+}
+
+.txt-categories-mobile {
+	color: #666769;
+	font-size: 28px;
+	font-weight: 100;
+	margin-top: 20px;
+	text-align: center;
+}
+
+#tbox_search_cat_mobile {
+	width: 100%;
+	text-align: center;
+	border-radius: 20px;
+	border: 1px solid #a2a4a4 !important;
+	background: transparent !important;
+	margin-bottom: 10px;
+	padding: 4px 10px;
+}
+
+.dropdown-mobile {
+	text-align: left;
+}
+
+.dropdown-title {
+	padding-bottom: 0px !important;
+}
+
+.dropdown-title-mobile {
+	margin-left: 30px;
+}
+
+.forum-mobile-sublinks {
+	margin-left: 70px;
+}
+
+.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:focus,.navbar-inverse .navbar-nav>.open>a:hover
+	{
+	background: transparent !important;
+}
+
+.forum-mobile-sublinks,.forum-mobile-sublinks:hover,.forum-mobile-sublinks:active
+	{
+	font-size: 14px;
+	color: #b2b4b4 !important;
+}
+
+.navbar-container {
+	display: none;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover,.navbar-inverse .navbar-nav>li>a:active,.navbar-inverse .navbar-nav>li>a:focus
+	{
+	opacity: 1 !important;
+	color: #9b9b9b !important;
+	font-weight: 400;
+}
+
+/* Forum Mobile Navbar CSS  end*/
+.underline {
+	background: #a7a9ac;
+	height: 2px;
+	width: 180px;
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.subheader {
+	color: #dae11a;
+	font-family: helvetica;
+	font-weight: 100;
+	margin-left: 7px;
+}
+
+.recipe-name {
+	color: #a3a5a4;
+	font-size: 18px;
+	font-weight: 100;
+	padding-right: 70px;
+	line-height: 1 !important;
+}
+
+/*
+#table_recipe {
+	cursor: pointer;
+}
+*/
+.recipe-name span, .latest-post span {
+	cursor: pointer;
+}
+
+.post {
+	color: #a6a8a7;
+	font-size: 14px;
+	font-weight: 300;
+	padding-right: 15px;
+}
+
+.post-num {
+	color: gray;
+	border: 1px solid #cbcecd;
+	border-radius: 26px;
+	padding: 0.5px 2px;
+	font-weight: 100;
+	width: 24px;
+	text-align: center;
+}
+
+.latest-post {
+	color: #a6a8a7;
+	font-size: 14px;
+	font-weight: 300;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.post-date {
+	color: #cbcecd;
+	border: 1px solid #cbcecd;
+	border-radius: 26px;
+	padding: .05px 0;
+	font-weight: 100;
+	width: 150px;
+	text-align: center;
+}
+
+content.forum > .panel {
+	background: white;
+	
+	-webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
+ 	box-shadow: 0 5px 15px rgba(0,0,0,.5);
+ 	
+ 	border: 1px solid #eee;
+ 	
+ 	padding-top: 20px;
+ 	padding-bottom: 20px;
+}
+
+.input-post {
+	position: relative;
+}
+
+.btn-wrap {
+	text-align: right;
+	margin-bottom: 10px;
+}
+.btn-wrap a {
+	color: dimgray;
+	font-size: 12px;
+	font-weight: normal;
+}
+.btn-wrap a:hover {
+	color: gray;
+}
+
+.input-post .btn-post {
+	position: absolute;
+	right: 12px;
+	bottom: 15px;
+}
+
+.input-post .fa-spin {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+}
+
+/* =================================== */
+/* ======>>> ORDERS TABLE CSS <<<===== */
+/* =================================== */
+.order-table-container {
+	color: #939598;
+}
+
+row:nth-child(even) {
+	background: transparent;
+}
+
+row:nth-child(odd) {
+	background: #f5f8d5;
+}
+
+/* border color #ffffff */
+
+/* ===========>>> END <<<============= */
+
+/* =================================== */
+/* ========>>> BUTTONS CSS <<<======== */
+/* =================================== */
+.forum-plus {
+	font-size: 7px;
+	background: #7d7f82;
+	border-radius: 10px;
+	color: #e8ebea;
+	text-align: center;
+	padding: 3px 4px 4px 4px;
+	margin-bottom: 0px;
+	margin-right: 8px;
+	
+	display: inline-block;
+	vertical-align: top;
+}
+
+.pencil-plus {
+	border: 0;
+	font-size: 10px;
+	background: #7d7f82;
+	border-radius: 30px;
+	color: #e8ebea;
+	text-align: center;
+	padding: 1px 4px 2px 4px;
+	margin-bottom: 0px;
+	margin-right: 8px;
+}
+
+.btn-replies { /* replies button with notifications */
+	background: none;
+	border: none;
+	position: relative;
+}
+
+.bg-replies {
+	background: #6c6e71;
+	width: 100px;
+	height: 35px;
+	border-radius: 40px;
+	text-align: center;
+}
+
+.img-replies {
+	width: 36px;
+	height: auto;
+	margin-top: 3px;
+}
+
+.num-replies {
+	position: absolute;
+	right: -10px;
+  	top: -10px;
+	font-size: 20px;
+	color: white;
+	background: #d8e022;
+	border-radius: 30px;
+	padding: 1px 10px;
+}
+.btn-default {
+	
+}
+.btn-primary {
+	
+}
+.btn-success {
+	background-color: #d8e022;
+	border: none;
+	color: white;
+}
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+	background-color: #D8E074;
+	color: white;
+}
+.btn-info {
+	
+}
+.btn-warning {
+	
+}
+.btn-danger {
+	
+}
+.btn-link {
+	
+}
+/* ===========>>> END <<<============= */
+
+/* =================================== */
+/* ======>>> MEDIA QUERRIES <<<======= */
+/* =================================== */
+@media screen and (max-width:991px) {
+	.eye-container {
+		display: none;
+	}
+}
+
+@media screen and (max-width:767px) {
+	#sidebar_forum {
+		display: none;
+	}
+	.navbar-container {
+		display: block;
+	}
+	.dropdown-mobile {
+		margin: 0;
+	}
+	.dropdown-mobile li a {
+		margin: 0;
+	}
+	.dropdown-mobile li a .glyphicon {
+		margin-right: 5px;
+	}
+	.txt-categories-mobile {
+		margin: 0;
+	}
+	.navbar-inverse .navbar-nav>li>a {
+		color: gray;
+	}
+	.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+		color: dimgray;
+	}
+	.say_something_container {
+		margin: 0;
+	}
+	.say_something_container input[type="text"]#tbox_post_thread {
+		width: 100%;
+	}
+}
+
+/* ===========>>> END <<<============= */
+
+/*
+ * Hacks
+ */
+#dp_swf_engine {
+	display: none;
+}
+
+
+
+/* Rodan */
+.file-list {
+	color: #7d7f82;
+	font-weight: 300;
+	margin-bottom: 20px;
+}
+.panel-2 {
+	color: #7d7f82;
+}
+
+
+/*
+ * Bootstrap Hack
+ */
+ 	textarea, textarea.form-control, .modal-content, .btn {
+ 		resize: none;
+
+ 		/*
+ 		 * Vendor
+ 		 */
+ 		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		border-radius: 0;
+
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+ 	}
+ 	.navbar, .dropdown-menu {
+ 		/*
+ 		 * Vendor
+ 		 */
+ 		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		border-radius: 0;
+ 	}
+ 	.navbar-default {
+ 		background: white;
+ 		margin-bottom: 0;
+		border-right: 0;
+		border-left: 0;
+ 	}
+	.media-body {
+	    width: 100%;
+	}
+	.media-body > .media .media-heading {
+	    font-size: 14px;
+	}
+	.dropdown-menu {
+	    right: 0;
+	    left: auto;
+	}
+	.tooltip {
+		opacity: 1.0 !important;
+	    filter: alpha(opacity=100) !important; /* For IE8 and earlier */
+	}
+	.tooltip .tooltip-inner {
+		background: #fff !important;
+		color: gray;
+		white-space: normal;
+		
+		/* For IE 5.5 - 7*/
+	    /* filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); */
+	    /* For IE 8*/
+	    /* -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; */
+	}
+	.tooltip.top .tooltip-arrow {
+		border-top-color: #fff;
+	}.tooltip.right .tooltip-arrow {
+		border-right-color: #fff;
+	}
+	.tooltip.bottom .tooltip-arrow {
+		border-bottom-color: #fff;
+	}
+	.tooltip.left .tooltip-arrow {
+		border-left-color: #fff;
+	}
