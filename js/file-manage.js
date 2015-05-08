@@ -2,69 +2,79 @@
 var FileManage = (function() {
   return {
     init: function() {
-      
-      
-      
-      
       $('.file-list').click(function() {
-        
-        
-        
-        
-        
-        
-        FileManage.listFiles(function() {
-          FileManage.initFileUpload();
+        Curia.loadTemplate('#noah-curia-template-fileList-fullpage', function(err, template) {
+          if (err) {
+            console.log(error);
+          } else {
+            $('#curia-posts').html(template);
+            jQuery('.view .btn').on('click', function () {
+              jQuery(this).parent().find('.btn').removeClass('active');
+              jQuery(this).addClass('active');
 
-          jQuery('.view .btn').on('click', function () {
-            jQuery(this).parent().find('.btn').removeClass('active');
-            jQuery(this).addClass('active');
-
-            if (jQuery(this).hasClass('grid')) {
-              jQuery('.files').addClass('grid');
-            } else {
-              jQuery('.files').removeClass('grid');
-            }
-          });
+              if (jQuery(this).hasClass('grid')) {
+                jQuery('.files').addClass('grid');
+              } else {
+                jQuery('.files').removeClass('grid');
+              }
+            });
+            
+            FileManage.initFileUpload();
+            FileManage.listFiles();
+          }
         });
       });
-
-      
-      
-      
-      
-      
-      var source = $('#noah-curia-template-fileList-fullpage').html();
-      Handlebars.precompile(source);
-      
-      
       
       // resize box on page Load and Window resize
       FileManage.box('.files.grid .media .pads');
-      $('.file-list').trigger('click');
-      
     },
     
     listFiles: function(callback) {
-      var template = Handlebars.compile($('#noah-curia-template-fileList-fullpage').html());
-      $.ajax({
-        method: 'GET',
-        url: 'http://localhost:4000/api/noah/thread/157293',
-        dataType: 'json',
-        success: function(data, status, xhr) {
-          var list = data.thread.children;
-          list = _.filter(list, function (elem) {
-            return !(_.isNull(elem.filename));
-          });
-
-          var html = template({file: list});
-          $('#curia-posts').html(html);
-          callback();
-        },
-        error: function(xhr, status, error) {
+      Curia.loadTemplate('#noah-curia-template-fileList', function(err, template) {
+        if (err) {
           console.log(error);
+        } else {
+          $.ajax({
+            method: 'GET',
+            url: 'http://localhost:4000/api/noah/thread/157293',
+            dataType: 'json',
+            success: function(data, status, xhr) {
+              var list = data.thread.children;
+              FileManage.filterFile(list, function(list) {
+                var html = Mustache.to_html(template, {file: list});
+                $('.files').html(html);
+                if (callback) {
+                  callback();
+                }
+              });
+            },
+            error: function(xhr, status, error) {
+              console.log(error);
+            }
+          });
         }
       });
+    },
+    
+    filterFile: function(list, callback, searchKey) {
+      list = _.filter(list, function (elem) {
+        var isValid = false;
+        if (elem.filename && elem.filesize) {
+          isValid = true;
+        }
+        return isValid;
+      });
+      
+      if (searchKey) {
+        searchKey = searchKey.toLowerCase();
+        list = _.filter(list, function (elem) {
+          var filename = elem.filename.toLowerCase();
+          var index = filename.indexOf(searchKey);
+        
+          return (index >= 0);
+        });
+      }
+      callback(list);
     },
     
     startFileUpdate: function(callback) {
@@ -94,25 +104,19 @@ var FileManage = (function() {
       
       $('#myModal').on('hidden.bs.modal', function (e) {
         myDropzone.removeAllFiles(true);
-        $('.file-list').trigger('click');
+        FileManage.listFiles();
       });
     },
     
     box : function (selector) {
-      
       jQuery(window).on('load resize click', function() {
-        
         FileManage.boxReset('.files.grid .media .pads');
-        jQuery(selector).height( FileManage.getMaxH(jQuery(selector)) );
-        
+        jQuery(selector).height( FileManage.getMaxH(jQuery(selector)));
       });
-      
     },
     
     boxReset : function (selector) {
-      
       jQuery(selector).height('');
-      
     },
     
     getMaxH : function (selector) {

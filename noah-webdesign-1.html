@@ -338,101 +338,90 @@
             </button>
         </div>
         <div class="clearfix"></div>
-
-        <time>Sept 23, 2015</time>
-
         <br>
         <br class="list-info">
 
         <div class="files grid">
-            {{#file}}
-	        <div class="media">
-	            <div class="pads">
-	                <div class="media-left">
-	                    <a href="#">
-	                        <i class="ion-document"></i>
-	                    </a>
-	                </div>
-	                <div class="media-body">
-	                    <div class="attachment">
-	
-	                        <a href="#" class="title">{{filename}}</a>
-	
-	                        <!-- [ hidden on large devices] -->
-	                        <span class="list-info">
-	                            <br>
-	                            <span>
-	                                <strong>Uploaded by:</strong>
-                                    {{#user}}
-                                    {{#firstName}}{{firstName}} {{/firstName}}
-                                    {{#lastName }}{{lastName }}{{/lastName }}
-                                    {{/user}}
-	                                <br>
-	                                2:11pm
-	                            </span>
-	                        </span>
-	                        
-	                        <span class="list-info text-muted"> | </span>
-	                        
-	                        <br class="grid-info" data-original-title="" title="">
-	                        
-	                        <span class="file-options">
-	                            <a href="#" class="grid-info ion-information-circled" data-toggle="tooltip" data-placement="auto" title="file info"></a>
-	                            &nbsp;
-	                            <small class="list-info">11kb&nbsp;</small>
-	                            <span class="grid-info" data-original-title="" title=""> </span>
-	                            <a href="#" class="ion-android-download" data-toggle="tooltip" data-placement="auto" title="download"></a>
-	                            &nbsp;
-	                            <span class="grid-info" data-original-title="" title="">
-	                                <a href="#" class="ion-edit" data-toggle="tooltip" data-placement="auto" title="edit"></a>
-	                                &nbsp;
-	                                <a href="#" class="ion-close" data-toggle="tooltip" data-placement="auto" title="delete"></a>
-	                            </span>
-	                        </span>
-	
-	                        <!-- [ Post controls ] -->
-	                        <div class="controls list-info">
-	                            <div class="dropdown clearfix">
-	                                <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-expanded="false">
-	                                    <span class="glyphicon glyphicon-option-vertical"></span>
-	                                </button>
-	                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuDivider">
-	                                    <li>
-	                                        <a href="#">Copy/Move</a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#">Comments</a>
-	                                    </li>
-	                                    <li role="presentation" class="divider"></li>
-	                                    <li>
-	                                        <a href="#">Upload File</a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#">Delete</a>
-	                                    </li>
-	                                </ul>
-	                            </div>
-	                        </div>
-	                        <!-- /Post controls -->
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	        {{/file}}
-
-            <div class="clearfix"></div>
         </div>
         <!-- /files grid -->
 
     </div>
-    <!-- /panel-2 -->
-    <script>
-    	jQuery(document).ready(function() {
-    		$(function () {
-			  	$('[data-toggle="tooltip"]').tooltip();
-			});
-    	});
-    </script>
+</script>
+<script id="noah-curia-template-fileList" type="text/template">
+  {{#file}}
+      <div class="media">
+          <div class="pads">
+              <div class="media-left">
+                  <a href="#">
+                      <i class="ion-document"></i>
+                  </a>
+              </div>
+              <div class="media-body">
+                  <div class="attachment">
+
+                      <a href="#" class="title">{{filename}}</a>
+
+                      <!-- [ hidden on large devices] -->
+                      <span class="list-info">
+                          <br>
+                          <span>
+                              <strong>Uploaded by:</strong>
+                              {{#user}}
+                              {{#firstName}}{{firstName}} {{/firstName}}
+                              {{#lastName }}{{lastName }}{{/lastName }}
+                              {{/user}}
+                              <br>
+                              2:11pm
+                          </span>
+                      </span>
+
+                      <span class="list-info text-muted"> | </span>
+
+                      <br class="grid-info" data-original-title="" title="">
+
+                      <span class="file-options">
+                          <a href="#" class="grid-info ion-information-circled" data-toggle="tooltip" data-placement="auto" title="file info"></a>
+                          &nbsp;
+                          <small class="list-info">11kb&nbsp;</small>
+                          <span class="grid-info" data-original-title="" title=""> </span>
+                          <a href="#" class="ion-android-download" data-toggle="tooltip" data-placement="auto" title="download"></a>
+                          &nbsp;
+                          <span class="grid-info" data-original-title="" title="">
+                              <a href="#" class="ion-edit" data-toggle="tooltip" data-placement="auto" title="edit"></a>
+                              &nbsp;
+                              <a href="#" class="ion-close" data-toggle="tooltip" data-placement="auto" title="delete"></a>
+                          </span>
+                      </span>
+
+                      <!-- [ Post controls ] -->
+                      <div class="controls list-info">
+                          <div class="dropdown clearfix">
+                              <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-expanded="false">
+                                  <span class="glyphicon glyphicon-option-vertical"></span>
+                              </button>
+                              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuDivider">
+                                  <li>
+                                      <a href="#">Copy/Move</a>
+                                  </li>
+                                  <li>
+                                      <a href="#">Comments</a>
+                                  </li>
+                                  <li role="presentation" class="divider"></li>
+                                  <li>
+                                      <a href="#">Upload File</a>
+                                  </li>
+                                  <li>
+                                      <a href="#">Delete</a>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                      <!-- /Post controls -->
+                  </div>
+              </div>
+          </div>
+      </div>
+      {{/file}}
 </script>
         <script src="//localhost:4000/hack-for-offline/jquery.min.js"></script>
         <script src="//localhost:4000/hack-for-offline/moment.min.js"></script>
@@ -440,7 +429,6 @@
         <script src="//localhost:4000/hack-for-offline/mustache.min.js"></script>
         <script src="//localhost:4000/hack-for-offline/dropzone.js"></script>
         <script src="//localhost:4000/hack-for-offline/underscore-min.js"></script>
-        <script src="//localhost:4000/hack-for-offline/handlebars.min.js"></script>
 
         <script src="//localhost:4000/js/curia-0.1.0.js"></script>
         <script src="js/jquery.urlive.min.js"></script>
