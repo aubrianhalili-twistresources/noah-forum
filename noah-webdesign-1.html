@@ -10,13 +10,13 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="generator" content="ToolTwist" />
-        <link href="//localhost:4000/hack-for-offline/bootstrap.min.css" rel="stylesheet">
-        <link href="//localhost:4000/hack-for-offline/font-awesome.min.css" rel="stylesheet">
-        <link href="//localhost:4000/hack-for-offline/ionicons.min.css" rel="stylesheet">
+        <link href="http://localhost:4000/hack-for-offline/bootstrap.min.css" rel="stylesheet">
+        <link href="http://localhost:4000/hack-for-offline/font-awesome.min.css" rel="stylesheet">
+        <link href="http://localhost:4000/hack-for-offline/ionicons.min.css" rel="stylesheet">
 
-        <link href="css/dropzone.css" rel="stylesheet">
-        <link href="css/jquery.urlive.css" rel="stylesheet" />
-        <link href="css/style.css" rel="stylesheet">
+        <link href="./css/dropzone.css" rel="stylesheet">
+        <link href="./css/jquery.urlive.css" rel="stylesheet" />
+        <link href="./css/style.css" rel="stylesheet">
 <style type='text/css'>
 /*
  * Files
@@ -225,7 +225,7 @@
                 <button class="btn-replies" onclick="ForumPage.showWall(); return false;">
                     <div class="num-replies">2</div>
                     <div class="bg-replies">
-                        <img src="images/msg.png" class="img-replies">
+                        <img src="./images/msg.png" class="img-replies">
                     </div>
                 </button>
                 <p class="txt-replies">Replies</p>
@@ -308,6 +308,29 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Edit File</h4>
+              </div>
+              <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Description</span>
+                    <input id="file-description" type="text" class="form-control" aria-describedby="basic-addon1">
+                    <input id="file-id" type="hidden" value="">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default file-update">Update</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">File Edit</h4>
               </div>
               <div class="modal-body">
@@ -350,6 +373,7 @@
 <script id="noah-curia-template-fileList" type="text/template">
   {{#file}}
       <div class="media">
+          <input type="hidden" name="description" value="{{description}}">
           <div class="pads">
               <div class="media-left">
                   <a href="#">
@@ -371,25 +395,26 @@
                               {{#lastName }}{{lastName }}{{/lastName }}
                               {{/user}}
                               <br>
-                              2:11pm
+                              {{#created}}{{created}}{{/created}}
+                              &nbsp;
                           </span>
                       </span>
 
-                      <span class="list-info text-muted"> | </span>
+                      {{#filesize}}<span class="list-info text-muted"> | </span>{{/filesize}}
 
                       <br class="grid-info" data-original-title="" title="">
 
                       <span class="file-options">
-                          <a href="#" class="grid-info ion-information-circled" data-toggle="tooltip" data-placement="auto" title="file info"></a>
+                          <a href="#" class="grid-info ion-information-circled" data-toggle="tooltip" data-placement="auto" data-html="true" title="Uploaded By: Aubrian Halili<b>File Size: 11kb</b>Date Uploaded: June 12, 1988 02:11pm"></a>
                           &nbsp;
-                          <small class="list-info">11kb&nbsp;</small>
+                          <small class="list-info">{{#filesize}}{{filesize}}kb{{/filesize}}</small>
                           <span class="grid-info" data-original-title="" title=""> </span>
-                          <a href="#" class="ion-android-download" data-toggle="tooltip" data-placement="auto" title="download"></a>
+                          <a href="javascipt:void(0);" id="{{id}}" class="ion-android-download file-download" data-toggle="tooltip" data-placement="auto" title="download"></a>
                           &nbsp;
                           <span class="grid-info" data-original-title="" title="">
-                              <a href="#" class="ion-edit" data-toggle="tooltip" data-placement="auto" title="edit"></a>
+                              <a href="javascipt:void(0);" id="{{id}}" class="ion-edit" data-toggle="modal" data-placement="auto" title="edit" data-target="#myModal2"></a>
                               &nbsp;
-                              <a href="#" class="ion-close" data-toggle="tooltip" data-placement="auto" title="delete"></a>
+                              <a href="javascipt:void(0);" id="{{id}}" class="ion-close file-delete" data-toggle="tooltip" data-placement="auto" title="delete"></a>
                           </span>
                       </span>
 
@@ -401,17 +426,10 @@
                               </button>
                               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuDivider">
                                   <li>
-                                      <a href="#">Copy/Move</a>
+                                      <a href="javascipt:void(0);" id="{{id}}" data-toggle="modal" data-target="#myModal2">Edit</a>
                                   </li>
                                   <li>
-                                      <a href="#">Comments</a>
-                                  </li>
-                                  <li role="presentation" class="divider"></li>
-                                  <li>
-                                      <a href="#">Upload File</a>
-                                  </li>
-                                  <li>
-                                      <a href="#">Delete</a>
+                                      <a href="javascipt:void(0);" id="{{id}}" class="file-delete">Delete</a>
                                   </li>
                               </ul>
                           </div>
@@ -423,16 +441,16 @@
       </div>
       {{/file}}
 </script>
-        <script src="//localhost:4000/hack-for-offline/jquery.min.js"></script>
-        <script src="//localhost:4000/hack-for-offline/moment.min.js"></script>
-        <script src="//localhost:4000/hack-for-offline/bootstrap.min.js"></script>
-        <script src="//localhost:4000/hack-for-offline/mustache.min.js"></script>
-        <script src="//localhost:4000/hack-for-offline/dropzone.js"></script>
-        <script src="//localhost:4000/hack-for-offline/underscore-min.js"></script>
+        <script src="http://localhost:4000/hack-for-offline/jquery.min.js"></script>
+        <script src="http://localhost:4000/hack-for-offline/moment.min.js"></script>
+        <script src="http://localhost:4000/hack-for-offline/bootstrap.min.js"></script>
+        <script src="http://localhost:4000/hack-for-offline/mustache.min.js"></script>
+        <script src="http://localhost:4000/hack-for-offline/dropzone.js"></script>
+        <script src="http://localhost:4000/hack-for-offline/underscore-min.js"></script>
 
-        <script src="//localhost:4000/js/curia-0.1.0.js"></script>
-        <script src="js/jquery.urlive.min.js"></script>
-        <script src="js/forum-0.0.1.js"></script>
-        <script src="js/file-manage.js"></script>
+        <script src="http://localhost:4000/js/curia-0.1.0.js"></script>
+        <script src="./js/jquery.urlive.min.js"></script>
+        <script src="./js/forum-0.0.1.js"></script>
+        <script src="./js/file-manage.js"></script>
     </body>
 </html>

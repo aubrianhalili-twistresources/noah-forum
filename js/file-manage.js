@@ -8,18 +8,8 @@ var FileManage = (function() {
             console.log(error);
           } else {
             $('#curia-posts').html(template);
-            jQuery('.view .btn').on('click', function () {
-              jQuery(this).parent().find('.btn').removeClass('active');
-              jQuery(this).addClass('active');
-
-              if (jQuery(this).hasClass('grid')) {
-                jQuery('.files').addClass('grid');
-              } else {
-                jQuery('.files').removeClass('grid');
-              }
-            });
-            
             FileManage.initFileUpload();
+            FileManage.initViewOption();
             FileManage.listFiles();
           }
         });
@@ -43,6 +33,63 @@ var FileManage = (function() {
               FileManage.filterFile(list, function(list) {
                 var html = Mustache.to_html(template, {file: list});
                 $('.files').html(html);
+                
+                $('.file-download').click(function(data) {
+                  var id = $(data.target).attr('id');
+                  var url = 'http://localhost:4000/api/noah/attachment/157293/' + id;
+                  window.open(url, '_blank');
+                });
+
+                $('.file-delete').click(function(data) {
+                  var id = $(data.target).attr('id');
+                  var url = 'http://localhost:4000/api/noah/element/157293/' + id;
+                  $.ajax({
+                    method: 'DELETE',
+                    url: url,
+                    dataType: 'json',
+                    success: function(data, status, xhr) {
+                      if (data.status === 'ok') {
+                        FileManage.listFiles();
+                      }
+                    },
+                    error: function(xhr, status, error) {
+                      console.log(error);
+                    }
+                  });
+                });
+                
+                $('#myModal2').on('show.bs.modal', function (e, b, c, d) {
+                  var parent = $(e.relatedTarget).closest("[class='media']");
+                  var elem = $(parent).find("[name='description']");
+                  var id = $(e.relatedTarget).attr('id');
+                  var value = $(elem).attr('value');
+                  $('#file-id').val(id);
+                  $('#file-description').val(value);
+                })
+                
+                $('.file-update').click(function(data) {
+                  var id = $('#file-id').val();
+                  var description = $('#file-description').val();
+                  var url = 'http://localhost:4000/api/noah/element/157293/' + id;
+                  $.ajax({
+                    method: 'PUT',
+                    url: url,
+                    dataType: 'json',
+                    data: {
+                      description: description
+                    },
+                    success: function(data, status, xhr) {
+                      if (data.status === 'ok') {
+                        FileManage.listFiles();
+                        $('#myModal2').modal('hide');
+                      }
+                    },
+                    error: function(xhr, status, error) {
+                      console.log(error);
+                    }
+                  });
+                });
+                
                 if (callback) {
                   callback();
                 }
@@ -105,6 +152,19 @@ var FileManage = (function() {
       $('#myModal').on('hidden.bs.modal', function (e) {
         myDropzone.removeAllFiles(true);
         FileManage.listFiles();
+      });
+    },
+    
+    initViewOption: function() {
+      jQuery('.view .btn').on('click', function () {
+        jQuery(this).parent().find('.btn').removeClass('active');
+        jQuery(this).addClass('active');
+
+        if (jQuery(this).hasClass('grid')) {
+          jQuery('.files').addClass('grid');
+        } else {
+          jQuery('.files').removeClass('grid');
+        }
       });
     },
     
